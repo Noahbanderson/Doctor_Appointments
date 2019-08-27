@@ -1,0 +1,19 @@
+<h1>Patients</h1>
+<hr />
+
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.full_name %>, illness: <%= user.illness%></li>
+    <span>
+      <%= link_to 'View Patient', user_path(user), class: "ui green button" %>
+      <%= link_to 'Edit Patient', edit_user_path(user), class: "ui blue button" %>
+      <%= link_to 'Delete Patient', user_path(user), method: :delete, class: "ui red button" %>
+    </span>
+  <% end %>
+</ul>
+
+
+
+<br />
+<br />
+<%= link_to 'Create new patient', new_user_path, class: "ui purple button" %>

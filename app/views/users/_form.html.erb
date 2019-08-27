@@ -1,0 +1,25 @@
+<h1><%= @user.id ? "Edit User" : "New User" %></h1>
+<hr />
+<%= form_with(model: @user, local: true, class: "ui form") do |f| %>
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, required: true, placeholder: "First Name", autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, required: true, placeholder: "Last Name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :illness %>
+    <%= f.text_field :illness, required: true, placeholder: "What are you sick with?" %>
+  </div>
+
+  <%= f.submit class: "ui green button" %>
+
+<% end %>
+<br />
+<br />
+<br />
+<%= link_to 'Return to Users', users_path, class: "ui red button" %>
