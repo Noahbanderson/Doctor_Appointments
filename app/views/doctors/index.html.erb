@@ -1,2 +1,17 @@
-<h1>Doctors#index</h1>
-<p>Find me in app/views/doctors/index.html.erb</p>
+<h1>Doctors</h1>
+<hr />
+<h2><%= @docs.length <= 0 ? "No doctors available" : "" %></h2>
+<ul>
+  <% @docs.each do |doc| %>
+    <li><h3>Dr. <%= doc.doc_name %></h3></li>
+    <span>
+      <%= link_to "View Doc's Appointments", doctor_appointments_path(doc), class: "ui green button small" %>
+      <%= link_to "Edit Doc's Name", edit_doctor_path(doc), class: "ui blue button small" %>
+      <%= link_to 'Fire Doctor', doctor_path(doc), method: :delete, class: "ui red button small" %>
+    </span>
+ <% end %>
+</ul>
+<br />
+<br />
+<br />
+<%= link_to 'New Doctor', new_doctor_path, class: "ui purple button" %>

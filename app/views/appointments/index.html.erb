@@ -1,2 +1,40 @@
-<h1>Appointments#index</h1>
-<p>Find me in app/views/appointments/index.html.erb</p>
+<h1>Appointments for Dr. <%= @doc.doc_name %></h1>
+<hr />
+<%= link_to 'Make an Appointment', new_doctor_appointment_path(@doc), class: "ui green button small" %>
+<hr />
+
+<h2>Neuro</h2>
+<ul>
+  <% @neuro.each do |neuro| %>
+    <li><%= neuro.user.full_name %></li>
+    <span>
+      <%= link_to 'Remove', doctor_appointment_path(@doc, neuro), method: :delete, class: "ui red button small" %>
+      <%= link_to 'Reschedule', edit_doctor_appointment_path(@doc, neuro), class: "ui blue button small" %>
+    </span>
+  <% end %>
+</ul>
+
+<h2>Cardio</h2>
+<ul>
+  <% @cardio.each do |cardio| %>
+    <li><%= cardio.user.full_name %></li>
+    <span>
+      <%= link_to 'Remove', doctor_appointment_path(@doc, cardio), method: :delete, class: "ui red button small" %>
+      <%= link_to 'Reschedule', edit_doctor_appointment_path(@doc, cardio), class: "ui blue button small" %>
+    </span>
+  <% end %>
+</ul>
+
+<h2>Ortho</h2>
+<ul>
+  <% @ortho.each do |ortho| %>
+    <li><%= ortho.user.full_name %></li>
+    <span>
+      <%= link_to 'Remove', doctor_appointment_path(@doc, ortho), method: :delete, class: "ui red button small" %>
+      <%= link_to 'Reschedule', edit_doctor_appointment_path(@doc, ortho), class: "ui blue button small" %>
+    </span>
+  <% end %>
+</ul>
+
+<hr />
+<%= link_to 'Return to Doctors', doctors_path, class: "ui purple button" %>
