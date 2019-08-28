@@ -9,7 +9,7 @@ class AppointmentsController < ApplicationController
   end
 
   def new
-    @users = User.all - @doc.users
+    @users = User.all - @doc.users 
     @appt = @doc.appointments.new
   end
 
@@ -24,8 +24,8 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    @users = User.all - @doc.users + #User.find(params[@doc.user]) #trying to find the specific person whom I am changing. 
-    @appt = @doc.appointments
+    @users = User.all - @doc.users
+    @users.unshift(User.find(@appt.user_id))
   end
 
   def update
